@@ -45,10 +45,7 @@ class Odin_model:
         self.optimizer = torch.optim.SGD(self.params, 0.005, 0.9, 0.0005)
         self.lr_scheduler = None
         if pretrained:
-            if torch.cuda.is_available():
-                self.load(checkpoint_path)
-            else:
-                self.load(checkpoint_path, map_location=torch.device('cpu'))
+            self.load(checkpoint_path)
             print("Model loaded from " + checkpoint_path)
 
         else:
@@ -69,7 +66,12 @@ class Odin_model:
             checkpoint_path: path to save checkpoint
         """
         # load check point
-        checkpoint = torch.load(checkpoint_path)
+        if torch.cuda.is_available():
+            checkpoint = torch.load(checkpoint_path)
+        else:
+             checkpoint = torch.load(checkpoint_path, map_location=torch.device('cpu'))
+            
+        
 
         # initialize state_dict from checkpoint to model
         self.model.load_state_dict(checkpoint['state_dict'])
