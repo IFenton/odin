@@ -12,7 +12,7 @@ class Odin_model:
 
     def __init__(
             self,
-            checkpoint_path: str = ".src/odin/models/checkpoint.pt",
+            checkpoint_path: str = "./src/odin/models/checkpoint.pt",
             device: str = "default",
             nms: float = 0.75,
             pretrained: bool = True,
