@@ -1,5 +1,5 @@
 name: Odin
-url: https://github.com/alan-turing-institute/odin
+url: https://github.com/IFenton/odin
 import: odin
 model: Odin_model
 args: None
