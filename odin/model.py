@@ -45,7 +45,7 @@ class Odin_model:
         self.optimizer = torch.optim.SGD(self.params, 0.005, 0.9, 0.0005)
         self.lr_scheduler = None
         if pretrained:
-            if torch.cuda.is_available()
+            if torch.cuda.is_available():
                 self.load(checkpoint_path)
             else:
                 self.load(checkpoint_path, map_location=torch.device('cpu'))
